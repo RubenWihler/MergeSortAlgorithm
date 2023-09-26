@@ -1,7 +1,16 @@
 fn main() {
-    let mut arr = [3, 2, 1, 5, 4, 6];
-    merge_sort::<6>(&mut arr);
-    println!("{:?}", arr);
+    let start = std::time::Instant::now();
+
+    let mut arr = [0; 100_000];
+    for i in 0..100_000 {
+        arr[i] = rand::random::<i32>();
+    }
+    merge_sort::<100_000>(&mut arr);
+
+    let end = std::time::Instant::now();
+    let time_taken = end.duration_since(start);
+
+    println!("Time taken to sort {} random numbers: {} ms", 100_000, time_taken.as_millis());
 }
 
 fn merge_sort<const N: usize>(arr: &mut [i32; N]) {
