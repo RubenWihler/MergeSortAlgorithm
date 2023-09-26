@@ -1,10 +1,11 @@
 fn main() {
-    let start = std::time::Instant::now();
-
     let mut arr = [0; 100_000];
     for i in 0..100_000 {
         arr[i] = rand::random::<i32>();
     }
+
+    let start = std::time::Instant::now();
+
     merge_sort::<100_000>(&mut arr);
 
     let end = std::time::Instant::now();
